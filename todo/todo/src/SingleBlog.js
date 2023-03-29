@@ -9,7 +9,7 @@ export function SingleBlog() {
   const [article, setArticle] = useState();
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/articles/${id}`).then((res) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/articles/${id}`).then((res) => {
       const { data, status } = res;
       console.log(data);
       if (status === 200) {

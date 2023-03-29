@@ -10,7 +10,7 @@ export function FilteredArticle() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/articles/category/${categoryId}`)
+      .get(`${process.env.REACT_APP_API_URL}/articles/category/${categoryId}`)
       .then((res) => {
         const { data, status } = res;
         if (status === 200) {

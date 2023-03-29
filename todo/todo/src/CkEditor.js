@@ -20,7 +20,7 @@ export function CkEditor() {
     const formData = new FormData();
     formData.append("image", imageFile);
     console.log(formData);
-    await fetch("http://localhost:8000/upload-image", {
+    await fetch(`${process.env.REACT_APP_API_URL}/upload-image`, {
       method: "POST",
       body: formData,
     })
@@ -33,7 +33,7 @@ export function CkEditor() {
     console.log({ content, categoryId });
 
     axios
-      .post("http://localhost:8000/articles", {
+      .post(`${process.env.REACT_APP_API_URL}/articles`, {
         title, // title: title,
         categoryId, //  categoryId: categoryId,
         content, // text: text,

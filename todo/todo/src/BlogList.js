@@ -19,7 +19,7 @@ export function ClientBlog() {
 
   function loadArticles(page, query = "") {
     axios
-      .get(`http://localhost:8000/articles?q=${query}&page=${page}`)
+      .get(`${process.env.REACT_APP_API_URL}/articles?q=${query}&page=${page}`)
       .then((res) => {
         const { data, status } = res;
         if (status === 200) {

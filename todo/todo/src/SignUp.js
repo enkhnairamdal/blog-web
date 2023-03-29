@@ -1,28 +1,41 @@
-import "./Login.css";
-export function SignUp() {
+import axios from "axios";
+import { useState } from "react";
+
+export function Register() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  function handleLogin() {
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/users/register`, {
+        username,
+        password,
+      })
+      .then((res) => {
+        const { data, status } = res;
+      })
+      .catch(({ response, code }) => {
+        const { data } = response;
+        alert(data.message);
+      });
+  }
   return (
-    // <div className="bigBox">
-    //   <div class="box">
-    //     <div class="form">
-    //       <h2>Sign Up</h2>
-    //       <div class="inputbox">
-    //         <input type="text" required="required" />
-    //         <span>Fullname</span>
-    //         <i></i>
-    //       </div>
-    //       <div class="inputbox">
-    //         <input type="email" required="required" />
-    //         <span>Email</span>
-    //         <i></i>
-    //       </div>
-    //       <div class="links">
-    //         <a href="3">Forgot Password</a>
-    //         <a href="#">Signup</a>
-    //       </div>
-    //       <input type="submit" value="Signup" />
-    //     </div>
-    //   </div>
-    // </div>
-    <div>hello</div>
+    <div style={{ width: 200, margin: "2em auto" }}>
+      <input
+        className="form-control"
+        placeholder="Хэрэглэгчийн нэр"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <input
+        type="password"
+        className="form-control"
+        placeholder="Нууц үг"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button className="btn btn-primary" onClick={handleLogin}>
+        Бүртгүүлэх
+      </button>
+    </div>
   );
 }

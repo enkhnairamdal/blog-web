@@ -72,7 +72,7 @@ export function ClientNavbar() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/categories`).then((res) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/categories`).then((res) => {
       const { data, status } = res;
       if (status === 200) {
         setCategories(data);

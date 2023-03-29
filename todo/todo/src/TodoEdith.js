@@ -29,7 +29,7 @@ export function CategoriesEdit({ show, onClose, onComplete, editingId }) {
 
     if (editingId === "new") {
       axios
-        .post("http://localhost:8000/categories", {
+        .post(`${process.env.REACT_APP_API_URL}/categories`, {
           name: name,
         })
         .then((res) => {
@@ -44,7 +44,7 @@ export function CategoriesEdit({ show, onClose, onComplete, editingId }) {
         });
     } else {
       axios
-        .put(`http://localhost:8000/categories/${editingId}`, {
+        .put(`${process.env.REACT_APP_API_URL}/categories/${editingId}`, {
           name: name,
         })
         .then((res) => {

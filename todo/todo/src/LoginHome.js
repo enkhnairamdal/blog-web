@@ -6,9 +6,10 @@ export function Login() {
   const [password, setPassword] = useState("");
   function handleLogin() {
     axios
-      .get(
-        `http://localhost:8000/login?username=${username}&password=${password}`
-      )
+      .post(`${process.env.REACT_APP_API_URL}/users/login`, {
+        username,
+        password,
+      })
       .then((res) => {
         const { data, status } = res;
         if (status === 200) {
@@ -18,11 +19,11 @@ export function Login() {
         }
       })
       .catch(({ response, code }) => {
-        if (response.status === 401) {
-          alert("Нууц үг эсвэл нэр буруу байна");
-        } else {
-          alert(code);
-        }
+        // if (response.status === 401) {
+        //   alert("Нууц үг эсвэл нэр буруу байна");
+        // } else {
+        //   alert(code);
+        // }
       });
   }
   return (
@@ -49,9 +50,9 @@ export function Login() {
           </div>
           <div className="links">
             <a href="3">Forgot Password</a>
-            <a href="/signUp">Signup</a>
+            <a href="#">Signup</a>
           </div>
-          <button>Login</button>
+          <button onClick={handleLogin}>Login</button>
         </div>
       </div>
     </div>

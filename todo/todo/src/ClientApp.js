@@ -1,7 +1,7 @@
 import { Link, Route, Routes, useParams } from "react-router-dom";
 import { ClientBlog } from "./BlogList";
 import { FilteredArticle } from "./FilteredArticle";
-
+import { Register } from "./SignUp";
 import { SingleBlog } from "./SingleBlog";
 
 export function ClientApp() {
@@ -15,6 +15,7 @@ export function ClientApp() {
           path="/blog/category/:categoryId"
           element={<FilteredArticle />}
         />
+        <Route path="/register" element={<Register />} />
         <Route path="/blog/:id" element={<SingleBlog />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
